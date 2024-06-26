@@ -35,6 +35,11 @@ jobs:
     # Use environment protection (require review)
     environment: intel_workflow
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@v2
         # Add local bin for cpplint
       - name: Setup
@@ -63,6 +68,11 @@ jobs:
           - build_type: Release
             benchmark_min_time: ""
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@v2
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.13
